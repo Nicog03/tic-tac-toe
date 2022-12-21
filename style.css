@@ -1,0 +1,23 @@
+:root {
+    --square-size: 150px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    max-height: fit-content;
+}
+
+body > div {
+    display: grid;
+    grid-template: repeat(3, var(--square-size)) / repeat(3, var(--square-size));
+    gap: 5px;
+}
