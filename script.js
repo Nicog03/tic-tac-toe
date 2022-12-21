@@ -18,6 +18,47 @@ let playerO = (function() {
     return {playerMarkSVG, name}
 })()
 
+function checkForWin() {
+    
+    //itterates horizontally through all squares
+    for (let l=0;l<=6;l+=3) {
+        for (let c=l;c<l+3;c++) {
+                if (Boolean(divs[l].player) && divs[c].player == divs[l].player) {
+
+                    if (c == l+2) {
+                        alert('win')
+                    }
+                } else {break}
+            }
+    }
+
+    //itterates vertically through all squares
+    for (let c=0;c<=2;c++) {
+        for (let l=c;l<=c+6;l+=3) {
+            if (Boolean(divs[c].player) && divs[l].player == divs[c].player) {
+
+                if (l == c+6) {
+                    alert('win')
+                }
+            } else {break}
+        }
+    }
+
+    //itterates diagonally to the right
+    for (let i=0;i<=8;i+=4) {
+        if (Boolean(divs[0].player) && divs[0].player == divs[i].player) {
+            i == 8 ? alert('win') : null
+        }
+    }
+
+    //itterates diagonally to the left
+    for (let i=2;i<=6;i+=2) {
+        if (Boolean(divs[2].player) && divs[2].player == divs[i].player) {
+            i == 6 ? alert('win') : null
+        }
+    }
+}
+
 let player = playerX
 
 squares.forEach(square => {
@@ -36,5 +77,7 @@ squares.forEach(square => {
                 player = playerX
             }
         }
+        
+        checkForWin()
     }
 })
