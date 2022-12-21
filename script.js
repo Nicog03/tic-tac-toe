@@ -1,3 +1,4 @@
+let squares = document.querySelectorAll('body > div > button')
 
 let playerX = (function() {
 
@@ -16,3 +17,24 @@ let playerO = (function() {
 
     return {playerMarkSVG, name}
 })()
+
+let player = playerX
+
+squares.forEach(square => {
+    square.onclick = () => {
+        
+        square.player = player.name
+
+        //assign a simbol to the square
+        if (!Boolean(square.innerHTML)) {
+
+            if (player == playerX) {
+                square.innerHTML = player.playerMarkSVG
+                player = playerO
+            } else {
+                square.innerHTML = player.playerMarkSVG
+                player = playerX
+            }
+        }
+    }
+})
