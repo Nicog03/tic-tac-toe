@@ -16,6 +16,13 @@ body {
     max-height: fit-content;
 }
 
+svg {
+    scale: 300%;
+    stroke-width: 3px;
+    stroke: black;
+    overflow: visible;
+}
+
 body > div {
     display: grid;
     grid-template: repeat(3, var(--square-size)) / repeat(3, var(--square-size));
