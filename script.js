@@ -48,14 +48,14 @@ function checkForWin() {
     for (let i=0;i<=8;i+=4) {
         if (Boolean(squares[0].player) && squares[0].player == squares[i].player) {
             i == 8 ? alert('win') : null
-        }
+        } else {break}
     }
 
     //itterates diagonally to the left
     for (let i=2;i<=6;i+=2) {
         if (Boolean(squares[2].player) && squares[2].player == squares[i].player) {
             i == 6 ? alert('win') : null
-        }
+        } else {break}
     }
 }
 
