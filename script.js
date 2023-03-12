@@ -49,7 +49,7 @@ function checkForWin() {
     }
 }
 
-let player = playerX
+let player = Player1
 
 squares.forEach(square => {
     square.onclick = () => {
@@ -59,12 +59,12 @@ squares.forEach(square => {
         //assign a simbol to the square
         if (!Boolean(square.innerHTML)) {
 
-            if (player == playerX) {
-                square.innerHTML = player.playerMarkSVG
-                player = playerO
+            if (player == Player1) {
+                square.innerHTML = player.markSVG
+                player = Player2
             } else {
-                square.innerHTML = player.playerMarkSVG
-                player = playerX
+                square.innerHTML = player.markSVG
+                player = Player1
             }
         }
         
