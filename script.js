@@ -50,28 +50,32 @@ const GameBoard = (() => {
     }
     }
 
-    return {gameboard, checkForWin}
+    const addClickListener = () => {
+        gameboard.forEach(square => {
+            square.onclick = () => {
+                
+                square.player = player.name
+        
+                //assign a simbol to the square
+                if (!Boolean(square.innerHTML)) {
+        
+                    if (player == Player1) {
+                        square.innerHTML = player.markSVG
+                        player = Player2
+                    } else {
+                        square.innerHTML = player.markSVG
+                        player = Player1
+                    }
+                }
+                
+                GameBoard.checkForWin()
+            }
+        })
+    }
+
+    return {gameboard, checkForWin, addClickListener}
 })()
 
 let player = Player1
 
-GameBoard.gameboard.forEach(square => {
-    square.onclick = () => {
-        
-        square.player = player.name
-
-        //assign a simbol to the square
-        if (!Boolean(square.innerHTML)) {
-
-            if (player == Player1) {
-                square.innerHTML = player.markSVG
-                player = Player2
-            } else {
-                square.innerHTML = player.markSVG
-                player = Player1
-            }
-        }
-        
-        GameBoard.checkForWin()
-    }
-})
+GameBoard.addClickListener()
