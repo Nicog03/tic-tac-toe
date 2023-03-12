@@ -1,4 +1,3 @@
-let squares = document.querySelectorAll('body > div > button')
 
 const Player = (name, markSVG) =>  {
     return {name, markSVG}
@@ -8,12 +7,14 @@ const Player1 = Player('X', '<svg xmlns="http://www.w3.org/2000/svg" width="24" 
 
 const Player2 = Player( 'O', '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z"></path></svg>')
 
-function checkForWin() {
-    
-    //itterates horizontally through all squares
+const GameBoard = (() => {
+    const gameboard = document.querySelectorAll('body > div > button')
+
+    const checkForWin = () => {
+        //itterates horizontally through all gameboard
     for (let l=0;l<=6;l+=3) {
         for (let c=l;c<l+3;c++) {
-                if (Boolean(squares[l].player) && squares[c].player == squares[l].player) {
+                if (Boolean(gameboard[l].player) && gameboard[c].player == gameboard[l].player) {
 
                     if (c == l+2) {
                         alert('win')
@@ -22,10 +23,10 @@ function checkForWin() {
             }
     }
 
-    //itterates vertically through all squares
+    //itterates vertically through all gameboard
     for (let c=0;c<=2;c++) {
         for (let l=c;l<=c+6;l+=3) {
-            if (Boolean(squares[c].player) && squares[l].player == squares[c].player) {
+            if (Boolean(gameboard[c].player) && gameboard[l].player == gameboard[c].player) {
 
                 if (l == c+6) {
                     alert('win')
@@ -36,22 +37,25 @@ function checkForWin() {
 
     //itterates diagonally to the right
     for (let i=0;i<=8;i+=4) {
-        if (Boolean(squares[0].player) && squares[0].player == squares[i].player) {
+        if (Boolean(gameboard[0].player) && gameboard[0].player == gameboard[i].player) {
             i == 8 ? alert('win') : null
         } else {break}
     }
 
     //itterates diagonally to the left
     for (let i=2;i<=6;i+=2) {
-        if (Boolean(squares[2].player) && squares[2].player == squares[i].player) {
+        if (Boolean(gameboard[2].player) && gameboard[2].player == gameboard[i].player) {
             i == 6 ? alert('win') : null
         } else {break}
     }
-}
+    }
+
+    return {gameboard, checkForWin}
+})()
 
 let player = Player1
 
-squares.forEach(square => {
+GameBoard.gameboard.forEach(square => {
     square.onclick = () => {
         
         square.player = player.name
@@ -68,6 +72,6 @@ squares.forEach(square => {
             }
         }
         
-        checkForWin()
+        GameBoard.checkForWin()
     }
 })
