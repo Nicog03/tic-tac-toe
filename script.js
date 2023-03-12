@@ -73,7 +73,7 @@ const GameBoard = (() => {
         })
     }
 
-    return {gameboard, checkForWin, addClickListener}
+    return {checkForWin, addClickListener}
 })()
 
 let player = Player1
