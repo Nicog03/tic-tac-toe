@@ -17,7 +17,7 @@ const GameBoard = (() => {
                 if (Boolean(gameboard[l].player) && gameboard[c].player == gameboard[l].player) {
 
                     if (c == l+2) {
-                        alert(`The ${GameBoard.gameboard[c].player} player has won the game`)
+                        alert(`The ${gameboard[c].player} player has won the game`)
                     }
                 } else {break}
             }
@@ -29,7 +29,7 @@ const GameBoard = (() => {
             if (Boolean(gameboard[c].player) && gameboard[l].player == gameboard[c].player) {
 
                 if (l == c+6) {
-                    alert(`The ${GameBoard.gameboard[l].player} player has won the game`)
+                    alert(`The ${gameboard[l].player} player has won the game`)
                 }
             } else {break}
         }
@@ -38,14 +38,14 @@ const GameBoard = (() => {
     //itterates diagonally to the right
     for (let i=0;i<=8;i+=4) {
         if (Boolean(gameboard[0].player) && gameboard[0].player == gameboard[i].player) {
-            i == 8 ? alert(`The ${GameBoard.gameboard[i].player} player has won the game`) : null
+            i == 8 ? alert(`The ${gameboard[i].player} player has won the game`) : null
         } else {break}
     }
 
     //itterates diagonally to the left
     for (let i=2;i<=6;i+=2) {
         if (Boolean(gameboard[2].player) && gameboard[2].player == gameboard[i].player) {
-            i == 6 ? alert(`The ${GameBoard.gameboard[i].player} player has won the game`) : null
+            i == 6 ? alert(`The ${gameboard[i].player} player has won the game`) : null
         } else {break}
     }
     }
@@ -73,9 +73,9 @@ const GameBoard = (() => {
         })
     }
 
-    return {checkForWin, addClickListener, gameboard}
+    return {checkForWin, addClickListener}
 })()
 
 let player = Player1
 
-GameBoard.addClickListener()    
+GameBoard.addClickListener()
