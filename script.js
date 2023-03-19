@@ -73,6 +73,25 @@ const GameBoard = (() => {
         })
     }
 
+    const alertWinner = (winner) => {
+        const body = document.querySelector('body')
+
+        const winnerWindow = document.createElement('div')
+        winnerWindow.classList.add('winner-window')
+        body.appendChild(winnerWindow)
+                
+        const winnerWindowText = document.createElement('p')
+        winnerWindowText.textContent = `The ${winner} player has won the game`
+
+        const button = document.createElement('button')
+        button.textContent = "New game"
+        
+        winnerWindow.appendChild(winnerWindowText)
+        winnerWindow.appendChild(button)
+        
+        button.onclick = () => {} //put the button action here
+    }
+
     return {checkForWin, addClickListener}
 })()
 
