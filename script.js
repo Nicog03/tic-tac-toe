@@ -89,7 +89,7 @@ const GameBoard = (() => {
         winnerWindow.appendChild(winnerWindowText)
         winnerWindow.appendChild(button)
         
-        button.onclick = () => {} //put the button action here
+        button.onclick = () => {resetGame(winnerWindow)} 
     }
 
     const resetGame = function(window) {
