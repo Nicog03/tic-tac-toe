@@ -92,6 +92,15 @@ const GameBoard = (() => {
         button.onclick = () => {} //put the button action here
     }
 
+    const resetGame = function(window) {
+
+        window.remove()
+        gameboard.forEach(square => {
+            square.player = undefined
+            square.innerHTML = ''
+        })
+    }
+
     return {checkForWin, addClickListener}
 })()
 
