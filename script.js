@@ -11,7 +11,10 @@ const GameBoard = (() => {
     const gameboard = document.querySelectorAll('body > div > button')
 
     const checkForWin = () => {
-        //itterates horizontally through all gameboard
+
+    checkForDraw() ? alertWinner(null, true) : null
+
+    //itterates horizontally through all gameboard
     for (let l=0;l<=6;l+=3) {
         for (let c=l;c<l+3;c++) {
                 if (Boolean(gameboard[l].player) && gameboard[c].player == gameboard[l].player) {
@@ -68,12 +71,24 @@ const GameBoard = (() => {
                     }
                 }
                 
-                GameBoard.checkForWin()
+                checkForWin()
+                checkForDraw()
             }
         })
     }
 
-    const alertWinner = (winner) => {
+    const checkForDraw = () => {
+
+        let draw = true
+
+        gameboard.forEach(square => {
+            square.player ? null : draw = false
+        })
+
+        return draw
+    }
+
+    const alertWinner = (winner, draw) => {
         const body = document.querySelector('body')
 
         const winnerWindow = document.createElement('div')
@@ -81,7 +96,8 @@ const GameBoard = (() => {
         body.appendChild(winnerWindow)
                 
         const winnerWindowText = document.createElement('p')
-        winnerWindowText.textContent = `The ${winner} player has won the game`
+
+        draw ? winnerWindowText.textContent = `It was a draw!` : winnerWindowText.textContent = `The ${winner} player has won the game`
 
         const button = document.createElement('button')
         button.textContent = "New game"
