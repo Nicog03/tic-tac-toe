@@ -89,6 +89,11 @@ const GameBoard = (() => {
     }
 
     const alertWinner = (winner, draw) => {
+
+        gameboard.forEach(square => {
+            square.onclick = null
+        })
+
         const body = document.querySelector('body')
 
         const winnerWindow = document.createElement('div')
