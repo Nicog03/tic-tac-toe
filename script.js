@@ -116,10 +116,13 @@ const GameBoard = (() => {
     const resetGame = function(window) {
 
         window.remove()
+
         gameboard.forEach(square => {
             square.player = undefined
             square.innerHTML = ''
         })
+
+        GameBoard.addClickListener()
     }
 
     return {checkForWin, addClickListener}
