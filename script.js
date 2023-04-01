@@ -14,8 +14,6 @@ const GameBoard = (() => {
 
         let thereIsWinner = false
 
-        checkForDraw() ? alertWinner(null, true) : null
-
         //itterates horizontally through all gameboard
         for (let l=0;l<=6;l+=3) {
             for (let c=l;c<l+3;c++) {
@@ -82,8 +80,9 @@ const GameBoard = (() => {
                     }
                 }
 
-                checkForWin()
-                checkForDraw()
+                if (!checkForWin()) {
+                    checkForDraw() ? alertWinner(null, true) : null
+                }
             }
         })
     }
