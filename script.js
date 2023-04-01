@@ -12,6 +12,8 @@ const GameBoard = (() => {
 
     const checkForWin = () => {
 
+        let thereIsWinner = false
+
         checkForDraw() ? alertWinner(null, true) : null
 
         //itterates horizontally through all gameboard
@@ -21,6 +23,7 @@ const GameBoard = (() => {
 
                         if (c == l+2) {
                             alertWinner(gameboard[l].player)
+                            thereIsWinner = true
                         }
                     } else {break}
                 }
@@ -33,6 +36,7 @@ const GameBoard = (() => {
 
                     if (l == c+6) {
                         alertWinner(gameboard[l].player)
+                        thereIsWinner = true
                     }
                 } else {break}
             }
@@ -41,16 +45,23 @@ const GameBoard = (() => {
         //itterates diagonally to the right
         for (let i=0;i<=8;i+=4) {
             if (Boolean(gameboard[0].player) && gameboard[0].player == gameboard[i].player) {
-                i == 8 ? alertWinner(gameboard[i].player) : null
+                if (i == 8) {
+                    alertWinner(gameboard[i].player)
+                    thereIsWinner = true
+                }
             } else {break}
         }
 
         //itterates diagonally to the left
         for (let i=2;i<=6;i+=2) {
             if (Boolean(gameboard[2].player) && gameboard[2].player == gameboard[i].player) {
-                i == 6 ? alertWinner(gameboard[i].player) : null
+                if (i == 6) {
+                    alertWinner(gameboard[i].player)
+                    thereIsWinner = true
+                }
             } else {break}
         }
+        return thereIsWinner
     }
 
     const addClickListener = () => {
@@ -70,7 +81,7 @@ const GameBoard = (() => {
                         player = Player1
                     }
                 }
-                
+
                 checkForWin()
                 checkForDraw()
             }
