@@ -12,45 +12,45 @@ const GameBoard = (() => {
 
     const checkForWin = () => {
 
-    checkForDraw() ? alertWinner(null, true) : null
+        checkForDraw() ? alertWinner(null, true) : null
 
-    //itterates horizontally through all gameboard
-    for (let l=0;l<=6;l+=3) {
-        for (let c=l;c<l+3;c++) {
-                if (Boolean(gameboard[l].player) && gameboard[c].player == gameboard[l].player) {
+        //itterates horizontally through all gameboard
+        for (let l=0;l<=6;l+=3) {
+            for (let c=l;c<l+3;c++) {
+                    if (Boolean(gameboard[l].player) && gameboard[c].player == gameboard[l].player) {
 
-                    if (c == l+2) {
+                        if (c == l+2) {
+                            alertWinner(gameboard[l].player)
+                        }
+                    } else {break}
+                }
+        }
+
+        //itterates vertically through all gameboard
+        for (let c=0;c<=2;c++) {
+            for (let l=c;l<=c+6;l+=3) {
+                if (Boolean(gameboard[c].player) && gameboard[l].player == gameboard[c].player) {
+
+                    if (l == c+6) {
                         alertWinner(gameboard[l].player)
                     }
                 } else {break}
             }
-    }
+        }
 
-    //itterates vertically through all gameboard
-    for (let c=0;c<=2;c++) {
-        for (let l=c;l<=c+6;l+=3) {
-            if (Boolean(gameboard[c].player) && gameboard[l].player == gameboard[c].player) {
-
-                if (l == c+6) {
-                    alertWinner(gameboard[l].player)
-                }
+        //itterates diagonally to the right
+        for (let i=0;i<=8;i+=4) {
+            if (Boolean(gameboard[0].player) && gameboard[0].player == gameboard[i].player) {
+                i == 8 ? alertWinner(gameboard[i].player) : null
             } else {break}
         }
-    }
 
-    //itterates diagonally to the right
-    for (let i=0;i<=8;i+=4) {
-        if (Boolean(gameboard[0].player) && gameboard[0].player == gameboard[i].player) {
-            i == 8 ? alertWinner(gameboard[i].player) : null
-        } else {break}
-    }
-
-    //itterates diagonally to the left
-    for (let i=2;i<=6;i+=2) {
-        if (Boolean(gameboard[2].player) && gameboard[2].player == gameboard[i].player) {
-            i == 6 ? alertWinner(gameboard[i].player) : null
-        } else {break}
-    }
+        //itterates diagonally to the left
+        for (let i=2;i<=6;i+=2) {
+            if (Boolean(gameboard[2].player) && gameboard[2].player == gameboard[i].player) {
+                i == 6 ? alertWinner(gameboard[i].player) : null
+            } else {break}
+        }
     }
 
     const addClickListener = () => {
